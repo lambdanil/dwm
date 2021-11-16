@@ -1,9 +1,11 @@
+# This is not actually a script, just reminders of what to do when setting up
 # set dwm fonts
 # set status bar length with utility
 # set tray spacing
 # set icon_width for status py script
 # set paths under config.h
 # set wallpaper path
+# set status length+icon_width+homedir in status script
 cp configs/dwm.desktop /usr/share/xsessions/
 cp configs/mc.ini /usr/share/mc/skins/custom.ini
 cp configs/picom.conf ~/.config/picom.conf
