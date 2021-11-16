@@ -48,7 +48,7 @@ def get_volume_mic():
         mute = "[off]"
     return(mute)
 def get_music(symbols,iplen,trayicons,icon_width):
-    if 1==1:
+    try:
         player = str(subprocess.check_output("playerctl -l | head -n 1", shell=True,encoding="utf-8"))
         player_split = player.split(".")
         player = player_split[0]
@@ -133,10 +133,12 @@ def get_music(symbols,iplen,trayicons,icon_width):
                 playing_str = str(f" {artist} :: {title}")
             else:
                 playing_str = str(f" {title}")
-    else: 
+    except: 
         playing_str = ("")
 #   102=83,88   
     show_ip = False
+    if trayicons == 0:
+        symbols += 1
     while (len(playing_str)+symbols+iplen+((trayicons*icon_width)-1)) < (statuslen-18):
         playing_str += " "
         show_ip = True
