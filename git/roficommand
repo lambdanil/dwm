@@ -1,0 +1,1 @@
+rofi -color-normal '#343434,#ffffff,#444444,#7000a5,#ffffff' -color-window '#343434,#343434,#ffffff' -show run

@@ -1,0 +1,13 @@
+# set dwm fonts
+# set status bar length with utility
+# set tray spacing
+# set icon_width for status py script
+# set paths under config.h
+# set wallpaper path
+cp configs/dwm.desktop /usr/share/xsessions/
+cp configs/mc.ini /usr/share/mc/skins/custom.ini
+cp configs/picom.conf ~/.config/picom.conf
+cp configs/profile ~/.profile
+cp configs/vimrc ~/.vimrc
+cd dwm-custom; make; make install; cd ..
+cp -r git/ ~/git
