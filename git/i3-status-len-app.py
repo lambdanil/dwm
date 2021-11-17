@@ -49,7 +49,7 @@ def get_volume_mic():
         mute = "[off]"
     return(mute)
 def get_music(symbols,iplen,trayicons,icon_width):
-    if 1==1:
+    try:
         player = str(subprocess.check_output("playerctl -l | head -n 1", shell=True,encoding="utf-8"))
         player_split = player.split(".")
         player = player_split[0]
@@ -93,9 +93,10 @@ def get_music(symbols,iplen,trayicons,icon_width):
         artist = artist.strip()
         num = statuslen-102
         maxlen = 50+num
-        maxlen_title = 47+num
+        maxlen_title = 47+num-trayicons
         maxlen_artist = int(12+(num/2))
-        maxlen_title2 = int((statuslen/2)-len(artist))
+#        maxlen_title2 = int(28+(num/2))
+        maxlen_title2 = int(((statuslen/2)-len(artist)+1)-(trayicons))
         title_old = title
         artist_old = artist
         if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
@@ -117,8 +118,8 @@ def get_music(symbols,iplen,trayicons,icon_width):
                         title = title_old[:maxlen_title-((int((icon_width*trayicons)/2))-1)]+"..."
                     else:
                         title = title_old[:maxlen_title-(int((icon_width*trayicons)/2))]+"..."
-                if (len(artist_old)+len(title)) > (maxlen-((icon_width)*trayicons)):
-                    if len(artist) > (maxlen_artist-(int((icon_width/2)*trayicons))-1):
+                if (len(artist_old)+len(title)) > (maxlen-((icon_width)*trayicons)-1):
+                    if len(artist) > (maxlen_artist-(int((icon_width/2)*trayicons))):
                         artist = artist[:(maxlen_artist-int(((icon_width/2)*trayicons)))]+"..."
                     if len(title) > (maxlen_title2-icon_width):
                         if odd:
@@ -135,7 +136,7 @@ def get_music(symbols,iplen,trayicons,icon_width):
                 playing_str = str(f" {artist} :: {title}")
             else:
                 playing_str = str(f" {title}")
-    else: 
+    except: 
         playing_str = ("")
 #   102=83,88   
     show_ip = False
