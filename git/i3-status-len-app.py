@@ -105,6 +105,7 @@ def get_music(symbols,iplen,trayicons,icon_width):
                 if len(artist) > maxlen_artist:
                     artist = artist[:maxlen_artist]+"..."
                 if len(title) > maxlen_title2:
+                    maxlen_title2 = int((statuslen/2)-len(artist))
                     title = title[:maxlen_title2]+"..."
         if (len(artist)+len(title)+(icon_width*2)+symbols+((trayicons*icon_width)-1)) > statuslen-20:
             if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
