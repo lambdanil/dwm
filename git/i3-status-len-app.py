@@ -95,7 +95,7 @@ def get_music(symbols,iplen,trayicons,icon_width):
         maxlen = 50+num
         maxlen_title = 47+num
         maxlen_artist = int(12+(num/2))
-        maxlen_title2 = int(28+(num/2))
+        maxlen_title2 = int((statuslen/2)-len(artist))
         title_old = title
         artist_old = artist
         if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
@@ -105,7 +105,6 @@ def get_music(symbols,iplen,trayicons,icon_width):
                 if len(artist) > maxlen_artist:
                     artist = artist[:maxlen_artist]+"..."
                 if len(title) > maxlen_title2:
-                    maxlen_title2 = int((statuslen/2)-len(artist))
                     title = title[:maxlen_title2]+"..."
         if (len(artist)+len(title)+(icon_width*2)+symbols+((trayicons*icon_width)-1)) > statuslen-20:
             if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
@@ -119,7 +118,7 @@ def get_music(symbols,iplen,trayicons,icon_width):
                     else:
                         title = title_old[:maxlen_title-(int((icon_width*trayicons)/2))]+"..."
                 if (len(artist_old)+len(title)) > (maxlen-((icon_width)*trayicons)):
-                    if len(artist) > (maxlen_artist-(int((icon_width/2)*trayicons))):
+                    if len(artist) > (maxlen_artist-(int((icon_width/2)*trayicons))-1):
                         artist = artist[:(maxlen_artist-int(((icon_width/2)*trayicons)))]+"..."
                     if len(title) > (maxlen_title2-icon_width):
                         if odd:
