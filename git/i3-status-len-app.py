@@ -2,8 +2,9 @@ import subprocess
 import time
 import os
 
-statuslen = int(102)
-intray = ["lutris","vlc","steam","discord","transmission"]
+statuslen = int(124)
+# 22
+intray = ["lutris","vlc","steam","discord"]
 
 icon_width=3
 
@@ -48,7 +49,7 @@ def get_volume_mic():
         mute = "[off]"
     return(mute)
 def get_music(symbols,iplen,trayicons,icon_width):
-    try:
+    if 1==1:
         player = str(subprocess.check_output("playerctl -l | head -n 1", shell=True,encoding="utf-8"))
         player_split = player.split(".")
         player = player_split[0]
@@ -90,13 +91,14 @@ def get_music(symbols,iplen,trayicons,icon_width):
         status = str(subprocess.check_output("playerctl status", shell=True))
         title = title.strip()
         artist = artist.strip()
-        maxlen = 50
-        maxlen_title = 47
-        maxlen_artist = 12
-        maxlen_title2 = 29
+        num = statuslen-102
+        maxlen = 50+num
+        maxlen_title = 47+num
+        maxlen_artist = int(12+(num/2))
+        maxlen_title2 = int(28+(num/2))
         title_old = title
         artist_old = artist
-        if symbols > ((statuslen-70)-(trayicons*icon_width)):
+        if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
             if len(title) > maxlen:
                 title = title[:maxlen_title]+"..."
             if (len(artist)+len(title)) > maxlen:
@@ -104,8 +106,8 @@ def get_music(symbols,iplen,trayicons,icon_width):
                     artist = artist[:maxlen_artist]+"..."
                 if len(title) > maxlen_title2:
                     title = title[:maxlen_title2]+"..."
-        if (len(artist)+len(title)+(icon_width*2)+symbols+((trayicons*icon_width)-1)) > statuslen-13:
-            if symbols > ((statuslen-70)-(trayicons*icon_width)):
+        if (len(artist)+len(title)+(icon_width*2)+symbols+((trayicons*icon_width)-1)) > statuslen-20:
+            if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
                 if (int((icon_width*trayicons)/2) == (float((icon_width*trayicons)/2))):
                     odd = False
                 else:
@@ -133,16 +135,16 @@ def get_music(symbols,iplen,trayicons,icon_width):
                 playing_str = str(f" {artist} :: {title}")
             else:
                 playing_str = str(f" {title}")
-    except: 
+    else: 
         playing_str = ("")
 #   102=83,88   
     show_ip = False
     if trayicons == 0:
         symbols += 1
-    while (len(playing_str)+symbols+iplen+((trayicons*icon_width)-1)) < (statuslen-18):
+    while (len(playing_str)+symbols+iplen+((trayicons*icon_width)-1)) < (statuslen-20):
         playing_str += " "
         show_ip = True
-    while (len(playing_str)+symbols+((trayicons*icon_width)-1)) < (statuslen-13) and (show_ip == False):
+    while (len(playing_str)+symbols+((trayicons*icon_width)-1)) < (statuslen-15) and (show_ip == False):
         playing_str += " "
     return(playing_str,show_ip)
 
