@@ -26,14 +26,18 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | grep -q "x11"; then
-    /home/jan/git/res
-    /home/jan/git/status > /dev/null 2>&1 &
-    feh --bg-fill /home/jan/Obrázky/ubuntuwall.jpg
-    setxkbmap cz
-    xinput set-prop "pointer:Logitech G305" "libinput Accel Speed" -0.65
+#if loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | grep -q "x11"; then
+#    /home/jan/git/res
+#    /home/jan/git/status > /dev/null 2>&1 &
+#    feh --bg-fill /home/jan/git/wallpapers/wallhaven-e7ek7k.jpg
+#    setxkbmap cz
+#    xinput set-prop "pointer:Logitech G305" "libinput Accel Speed" -0.65
 #    feh --bg-scale /home/jan/Obrázky/violet-background-ubuntu-mascot-stock-5k-8k-8192x4608-3790.jpg
-    numlockx on
-    picom &
-    playerctld daemon &
-fi
+#    numlockx on
+#    picom --experimental-backends &
+#    playerctld daemon &
+#    export QT_QPA_PLATFORMTHEME="qt5ct"
+#    fbsetroot -solid "#101010"
+#    wal -R > /dev/null 2>&1 &
+#    python3 /home/jan/git/wallp.py &
+#fi

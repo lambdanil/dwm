@@ -1,0 +1,12 @@
+#!/usr/bin/python3
+import subprocess
+import os
+
+try:
+    output = subprocess.check_output("pgrep -af trayer | grep -v trayercmd", shell=True)
+    output_split = str(output).split(" ")
+    output = output_split[0]
+    output = str(output).replace("b'","")
+    os.system(f"kill -9 {output}")
+except:
+    os.system("trayer --width 5 --height 16 --edge top --align right --distancefrom right --distance 12 &")

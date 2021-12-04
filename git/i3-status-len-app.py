@@ -4,7 +4,8 @@ import os
 
 statuslen = int(124)
 # 22
-intray = ["lutris","vlc","steam","discord"]
+#intray = ["lutris","vlc","steam","discord"]
+intray = []
 
 icon_width=3
 
@@ -95,6 +96,8 @@ def get_music(symbols,iplen,trayicons,icon_width):
         maxlen = 50+num
         maxlen_title = 47+num-trayicons
         maxlen_artist = int(12+(num/2))
+        l1 = 20 # 20/12
+        l2 = 15 # 15/7
 #        maxlen_title2 = int(28+(num/2))
         maxlen_title2 = int(((statuslen/2)-len(artist)+1)-(trayicons))
         title_old = title
@@ -107,8 +110,8 @@ def get_music(symbols,iplen,trayicons,icon_width):
                     artist = artist[:maxlen_artist]+"..."
                 if len(title) > maxlen_title2:
                     title = title[:maxlen_title2]+"..."
-        if (len(artist)+len(title)+(icon_width*2)+symbols+((trayicons*icon_width)-1)) > statuslen-20:
-            if symbols > ((statuslen-70-num)-(trayicons*icon_width)):
+        if (len(artist)+len(title)+(icon_width*2)+symbols+((trayicons*icon_width)-1)) > statuslen-l1:
+            if symbols > ((statuslen-70-num-1)-(trayicons*icon_width)):
                 if (int((icon_width*trayicons)/2) == (float((icon_width*trayicons)/2))):
                     odd = False
                 else:
@@ -118,7 +121,7 @@ def get_music(symbols,iplen,trayicons,icon_width):
                         title = title_old[:maxlen_title-((int((icon_width*trayicons)/2))-1)]+"..."
                     else:
                         title = title_old[:maxlen_title-(int((icon_width*trayicons)/2))]+"..."
-                if (len(artist_old)+len(title)) > (maxlen-((icon_width)*trayicons)-1):
+                if (len(artist_old)+len(title))+2 > (maxlen-((icon_width)*trayicons)-1):
                     if len(artist) > (maxlen_artist-(int((icon_width/2)*trayicons))):
                         artist = artist[:(maxlen_artist-int(((icon_width/2)*trayicons)))]+"..."
                     if len(title) > (maxlen_title2-icon_width):
@@ -142,10 +145,10 @@ def get_music(symbols,iplen,trayicons,icon_width):
     show_ip = False
     if trayicons == 0:
         symbols += 1
-    while (len(playing_str)+symbols+iplen+((trayicons*icon_width)-1)) < (statuslen-20):
+    while (len(playing_str)+symbols+iplen+((trayicons*icon_width)-1)) < (statuslen-l1):
         playing_str += " "
         show_ip = True
-    while (len(playing_str)+symbols+((trayicons*icon_width)-1)) < (statuslen-15) and (show_ip == False):
+    while (len(playing_str)+symbols+((trayicons*icon_width)-1)) < (statuslen-l2) and (show_ip == False):
         playing_str += " "
     return(playing_str,show_ip)
 
@@ -165,13 +168,16 @@ while True:
     status_music,ipshow = get_music(len(status_date)+len(status_volume)+len(status_mic),len(status_ip),trayicons,icon_width)
     space = ""
     if trayicons == 0:
-        space = " "
+#        space = " "
+        space = ""
     else:
         space = ""
     if ipshow == False:
         status = str(f"{status_music} |  {status_volume}  {status_mic} |  {status_date}{space}")
+#        status = str(f"{status_music} | {status_volume} | {status_mic} | {status_date}{space}")
     else:
         status = str(f"{status_music} |  {status_ip} |  {status_volume}  {status_mic} |  {status_date}{space}")
+#        status = str(f"{status_music} | {status_ip} | {status_volume} | {status_mic} | {status_date}{space}")
     if '"' in status:
         status = status.replace('"',"'")
     os.system(f'xsetroot -name "                                                                                            {status}"')
