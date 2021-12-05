@@ -27,17 +27,18 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 #if loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | grep -q "x11"; then
-#    /home/jan/git/res
-#    /home/jan/git/status > /dev/null 2>&1 &
-#    feh --bg-fill /home/jan/git/wallpapers/wallhaven-e7ek7k.jpg
+#    /home/jan/git/dwm/git/res
+#    /home/jan/git/dwm/git/status > /dev/null 2>&1 &
+#    feh --bg-fill /usr/share/backgrounds/fedora-workstation/winter-in-bohemia.png
 #    setxkbmap cz
-#    xinput set-prop "pointer:Logitech G305" "libinput Accel Speed" -0.65
-#    feh --bg-scale /home/jan/Obrázky/violet-background-ubuntu-mascot-stock-5k-8k-8192x4608-3790.jpg
+#    xinput set-prop "pointer:Logitech G305" "libinput Accel Speed" -1
+#    xinput set-prop "pointer:Logitech G305" "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 0.44
 #    numlockx on
-#    picom --experimental-backends &
+#    picom &
 #    playerctld daemon &
 #    export QT_QPA_PLATFORMTHEME="qt5ct"
+#    export PATH=$PATH:/var/lib/flatpak/exports/bin
 #    fbsetroot -solid "#101010"
 #    wal -R > /dev/null 2>&1 &
-#    python3 /home/jan/git/wallp.py &
+#    python3 /home/jan/git/dwm/git/wallp.py &
 #fi

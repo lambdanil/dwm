@@ -44,16 +44,16 @@ static const unsigned int alphas[][3]      = {
 // Media keys
 #include <X11/XF86keysym.h>
 
-static const char *upvol[]   = { "/home/jan/git/upvol",   NULL };
-static const char *downvol[] = { "/home/jan/git/downvol",   NULL };
+static const char *upvol[]   = { "/home/jan/git/dwm/git/upvol",   NULL };
+static const char *downvol[] = { "/home/jan/git/dwm/git/downvol",   NULL };
 static const char *mutevol[] = { "/usr/bin/amixer", "-D", "pulse", "sset", "Master", "toggle",   NULL };
 static const char *mutemic[] = { "/usr/bin/amixer", "-D", "pulse", "sset", "Capture", "toggle",    NULL };
-static const char *statusreload[] = { "/usr/bin/python3", "/home/jan/git/i3-status-reload.py",   NULL };
+static const char *statusreload[] = { "/usr/bin/python3", "/home/jan/git/dwm/git/i3-status-reload.py",   NULL };
 static const char *lock[] = { "/usr/bin/i3lock", "-i", "/home/jan/Obrázky/wall5.png",   NULL };
 static const char *dwmkill[] = { "/usr/bin/killall", "dwm", NULL };
 static const char *playpause[] = { "/usr/bin/playerctl", "play-pause",   NULL };
-static const char *screenshot[] = { "/home/jan/git/scrotcmd", NULL };
-static const char *scrarea[] = { "/home/jan/git/scrotcmds", NULL };
+static const char *screenshot[] = { "/home/jan/git/dwm/git/scrotcmd", NULL };
+static const char *scrarea[] = { "/home/jan/git/dwm/git/scrotcmds", NULL };
 
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
@@ -100,11 +100,11 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "/home/jan/git/roficommand", NULL };
+static const char *dmenucmd[] = { "/home/jan/git/dwm/git/roficommand", NULL };
 static const char *termcmd[]  = { "mate-terminal", NULL };
 static const char *editor[] = { "mate-terminal", "-e", "vim" , NULL };
 static const char *files[] = { "mate-terminal", "-e", "mc" , NULL };
-static const char *trayer[] = { "/home/jan/git/trayercmd", NULL };
+static const char *trayer[] = { "/home/jan/git/dwm/git/trayercmd", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

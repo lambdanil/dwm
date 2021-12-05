@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=dwm
 Comment=dynamic window manager
-Exec=/home/jan/git/dwmloop
+Exec=/home/jan/git/dwm/git/dwmloop
 TryExec=dwm
 Type=Application
 X-LightDM-DesktopName=dwm
