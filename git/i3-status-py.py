@@ -2,7 +2,7 @@ import subprocess
 import time
 import os
 
-statuslen = int(123)
+statuslen = int(125)
 # 22
 #intray = ["lutris","vlc","steam","discord"]
 intray = []
@@ -33,21 +33,25 @@ def get_ip():
         ip_str = str(f"{interface}: {ip}")
     return(ip_str)
 def get_volume():
-    volume = str(subprocess.check_output("amixer -D pulse sget Master | grep %", shell=True))
-    if "[on]" in volume:
-        mute = "[on]"
-    else:
+    volume = str(subprocess.check_output("pamixer --get-volume", shell=True))
+    try:
+        mutestr = str(subprocess.check_output("pamixer --get-mute", shell=True))
         mute = "[off]"
-    volume_split = volume.split("[")
-    volume = volume_split[1]
-#    volume = volume.replace("]","",1)
-    return("["+volume+mute)
+    except:
+        mute = "[on]"
+    volume = volume+"%"
+    volume = volume.replace("\\n'","")
+    volume = volume.replace("b'","")
+    if mute != "[off]":
+        return("["+volume+"] "+mute)
+    else:
+        return(mute)
 def get_volume_mic():
-    volume = str(subprocess.check_output("amixer -D pulse sget Capture | grep %", shell=True))
-    if "[on]" in volume:
-        mute = "[on]"
-    else:
+    try:
+        volume = str(subprocess.check_output("pamixer --default-source --get-mute", shell=True))
         mute = "[off]"
+    except:
+        mute = "[on]"
     return(mute)
 def get_music(symbols,iplen,trayicons,icon_width):
     l1 = 20
@@ -183,4 +187,5 @@ while True:
     if '"' in status:
         status = status.replace('"',"'")
     os.system(f'xsetroot -name "                                                                                            {status}"')
+#    print(status)
     time.sleep(1)
