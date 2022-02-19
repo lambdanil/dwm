@@ -1,0 +1,2 @@
+#!/bin/bash
+xfce4-appfinder;xdotool search --desktop $(xdotool get_desktop) --class xfce4-Appfinder windowactivate
