@@ -26,3 +26,7 @@ fi
 
 unset rc
 export PS1="[\u@\h] \t\n(\w) \\$ \[$(tput sgr0)\]"
+alias emacs="emacsclient -c -a 'emacs'"
+alias vim="emacsclient -nw -a 'emacs'"
+export EDITOR="emacsclient -nw -a 'emacs'"
+export PATH=$HOME/.config/guix/current/bin:$PATH
